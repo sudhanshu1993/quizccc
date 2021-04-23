@@ -37,4 +37,11 @@ class SuperadminController extends Controller
                           ->get()->count();              
         return view('superadmin',compact('students_count', 'exam_count'));
     }
+    public function Logout(){
+        auth()->logout();
+    
+        session()->flash('message', 'Some goodbye message');
+    
+        return redirect('superadmin/login');
+      }
 }

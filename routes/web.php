@@ -207,7 +207,7 @@ Route::post('/date',function(Request $req){
  //superadmin
  Route::prefix('superadmin')->group(function(){
     Route::get('/login', 'Auth\SuperadminLoginController@showLoginForm')->name('superadmin.login');
-    Route::post('/login', 'Auth\SuperadminLoginController@login')->name('admin.login.submit');
+    Route::post('/login', 'Auth\SuperadminLoginController@login')->name('superadmin.login.submit');
     Route::post('/superadminregister', 'Auth\SuperadminLoginController@register');
     Route::get('', 'SuperadminController@index')->name('superadmin.dashboard');
 });
