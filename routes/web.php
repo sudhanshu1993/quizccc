@@ -135,7 +135,9 @@ Route::delete('test',function(){
     });
     
 Route::post('logout', 'AdminController@Logout');
-   
+
+Route::post('logout1', 'SuperadminController@Logout');
+
 Route::get('/comingsoon', 'AdminController@comingsoon');
 
 
@@ -205,9 +207,14 @@ Route::post('/date',function(Request $req){
     }  */
 });
  //superadmin
+ Route::get('/liststudent', 'SuperadminController@showstudent')->name('studentlist');
+    Route::post('/liststudent', 'SuperadminController@Addstudent');
+    
  Route::prefix('superadmin')->group(function(){
     Route::get('/login', 'Auth\SuperadminLoginController@showLoginForm')->name('superadmin.login');
     Route::post('/login', 'Auth\SuperadminLoginController@login')->name('superadmin.login.submit');
     Route::post('/superadminregister', 'Auth\SuperadminLoginController@register');
     Route::get('', 'SuperadminController@index')->name('superadmin.dashboard');
+
+     
 });

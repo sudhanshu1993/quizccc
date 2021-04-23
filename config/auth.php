@@ -128,4 +128,11 @@ return [
             'expire' => 60,
         ],
     ],
+    'passwords' => [
+        'superadmins' => [
+            'provider' => 'superadmins',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+    ],
 ];

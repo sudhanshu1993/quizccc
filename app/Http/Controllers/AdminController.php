@@ -13,7 +13,7 @@ use App\examsubject;
 use response;
 use Illuminate\Support\Facades\input;
 use App\Http\Requests;
-
+use App\Admin;
 use Validator;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
@@ -460,11 +460,23 @@ class AdminController extends Controller
      //   return view('adminchild.updatestudent');
     }
 
+    // public function Logout(){
+    //     if(Auth::guard('superadmin')->check()) // this means that the admin was logged in.
+    //     {
+    //         Auth::guard('superadmin')->logout();
+    //         return redirect()->route('superadmin.login');
+    //     }
+    //     auth()->logout();
+    
+    //     session()->flash('message', 'Some goodbye message');
+    
+    //     return redirect('admin/login');
+    //   }
     public function Logout(){
-        if(Auth::guard('superadmin')->check()) // this means that the admin was logged in.
+        if(Auth::guard('admin')->check()) // this means that the admin was logged in.
         {
-            Auth::guard('superadmin')->logout();
-            return redirect()->route('superadmin.login');
+            Auth::guard('admin')->logout();
+            return redirect()->route('admin.login');
         }
         auth()->logout();
     

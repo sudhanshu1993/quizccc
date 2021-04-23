@@ -14,7 +14,7 @@ use App\examsubject;
 use response;
 use Illuminate\Support\Facades\input;
 use App\Http\Requests;
-
+use App\Superadmin;
 use Validator;
 use Carbon\Carbon;
 
@@ -38,10 +38,26 @@ class SuperadminController extends Controller
         return view('superadmin',compact('students_count', 'exam_count'));
     }
     public function Logout(){
+        if(Auth::guard('superadmin')->check()) // this means that the admin was logged in.
+        {
+            Auth::guard('superadmin')->logout();
+            return redirect()->route('superadmin.login');
+        }
         auth()->logout();
     
         session()->flash('message', 'Some goodbye message');
     
         return redirect('superadmin/login');
       }
+      public function showstudent()
+    {
+        $students = DB::table('users')->orderBy('created_at', 'DESC')->where('admin_id',Auth::user()->id)
+     //               ->limit(50)
+                    ->get();
+        $category = category::all();
+       // console($student);
+       return view('liststudent',compact('students','category'));
+       // return view('liststudent',['students' => $students]);
+    }
+    
 }
