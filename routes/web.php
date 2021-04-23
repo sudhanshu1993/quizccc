@@ -89,6 +89,7 @@ Route::delete('test',function(){
     Route::get('StudentLogin/{id}', 'Auth\StudentRegController@showLoginForm');
 
     Auth::routes();
+   
     
     //Student
     Route::post('Studentlogout', 'HomeController@Logout');
@@ -202,4 +203,11 @@ Route::post('/date',function(Request $req){
     foreach ($student as $user) {
         dump($user);
     }  */
+});
+ //superadmin
+ Route::prefix('superadmin')->group(function(){
+    Route::get('/login', 'Auth\SuperadminLoginController@showLoginForm')->name('superadmin.login');
+    Route::post('/login', 'Auth\SuperadminLoginController@login')->name('admin.login.submit');
+    Route::post('/superadminregister', 'Auth\SuperadminLoginController@register');
+    Route::get('', 'SuperadminController@index')->name('superadmin.dashboard');
 });

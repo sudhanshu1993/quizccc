@@ -36,6 +36,7 @@ return array(
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\Student' => $baseDir . '/app/Student.php',
+    'App\\Superadmin' => $baseDir . '/app/Superadmin.php',
     'App\\User' => $baseDir . '/app/User.php',
     'App\\category' => $baseDir . '/app/category.php',
     'App\\examsubject' => $baseDir . '/app/examsubject.php',
